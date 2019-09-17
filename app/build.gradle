@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+apply from: rootProject.file('config.gradle')
+
+
+android {
+    compileSdkVersion compileVersion
+    defaultConfig {
+        applicationId "com.hxgd.collection"
+        minSdkVersion minSdk
+        targetSdkVersion targetSdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation":
+                                     "$projectDir/schemas".toString()]
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    // Butterknife requires Java 8.
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    api project(':cities_picker') //城市选择器
+
+    implementation 'com.melnykov:floatingactionbutton:1.1.0'
+
+    implementation recyclerView
+    implementation easypermissions
+    implementation stetho
+    implementation stethoOkhttp
+    implementation BaseRecyclerViewAdapter
+    implementation cardView
+    implementation qmui
+
+    implementation butterknife
+
+    annotationProcessor butterknifeannotation
+
+     implementation 'de.hdodenhof:circleimageview:3.0.0'
+
+    implementation okhttp
+    implementation okhttp_logging
+    implementation retrofit
+    implementation retrofit_gson_converter
+    implementation retrofit_rxjava_adapter
+    implementation rxjava
+    implementation rxAndroid
+    implementation androidLogger
+    implementation room
+    annotationProcessor roomCompiler
+
+    implementation eventbus
+
+}

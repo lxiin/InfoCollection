@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_marginTop="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/ic_launcher"
+        />
+
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundLinearLayout
+        android:layout_width="match_parent"
+        app:qmui_borderWidth="1px"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+         android:layout_marginTop="40dp"
+        app:qmui_borderColor="#dcdcdc"
+        android:layout_height="45dp">
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="手机号"
+            android:singleLine="true"
+            android:maxLength="11"
+            android:inputType="number"
+            android:digits="0123456789"
+            android:layout_marginLeft="5dp"
+            android:background="@null"
+            />
+
+
+    </com.qmuiteam.qmui.widget.roundwidget.QMUIRoundLinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        android:orientation="horizontal"
+        android:layout_height="45dp">
+
+
+
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundLinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_marginRight="15dp"
+        app:qmui_borderWidth="1px"
+        app:qmui_borderColor="#dcdcdc"
+        android:layout_height="45dp">
+
+        <EditText
+            android:id="@+id/et_verify_code"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_height="match_parent"
+            android:hint="验证码"
+            android:singleLine="true"
+            android:inputType="number"
+            android:maxLength="8"
+            android:background="@null"
+            />
+
+    </com.qmuiteam.qmui.widget.roundwidget.QMUIRoundLinearLayout>
+
+    <com.qmuiteam.qmui.alpha.QMUIAlphaTextView
+        android:id="@+id/tv_get_code"
+        android:layout_width="0dp"
+        android:layout_weight="1.5"
+        android:background="@android:color/holo_blue_light"
+        android:gravity="center"
+        android:textColor="#FFF"
+        android:layout_height="match_parent"
+        android:text="获取验证码"
+        />
+
+    </LinearLayout>
+
+    <com.qmuiteam.qmui.alpha.QMUIAlphaButton
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:text="登录"
+        android:textColor="#FFF"
+        android:background="@android:color/holo_blue_light"
+        />
+
+
+</LinearLayout>
