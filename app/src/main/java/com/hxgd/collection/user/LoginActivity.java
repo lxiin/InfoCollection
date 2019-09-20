@@ -128,6 +128,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.postDelayed(new Runnable() {
             @Override
             public void run() {
+                Logger.e("测试一下git");
                 loadingDialog.dismiss();
                 RecordListActivity.start(LoginActivity.this);
                 finish();
