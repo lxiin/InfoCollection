@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView tvGetCode;
     @BindView(R.id.btn_login)
     Button btnLogin;
-
+    //测试pull
     CountDownButtonHelper countDownButtonHelper;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     public static final String[] PERMISSION_LIST = {
