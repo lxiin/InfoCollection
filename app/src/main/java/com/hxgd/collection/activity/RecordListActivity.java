@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.hxgd.collection.BuildConfig;
 import com.hxgd.collection.R;
 import com.hxgd.collection.audio.AudioAdapter;
 import com.hxgd.collection.audio.AudioRecordItem;
@@ -27,7 +26,9 @@ import com.hxgd.collection.audio.PlaybackFragment;
 import com.hxgd.collection.bean.BaseEntity;
 import com.hxgd.collection.db.DBHelper;
 import com.hxgd.collection.net.ApiFactory;
-import com.hxgd.collection.user.UserInfoActivity;
+import com.hxgd.collection.user.SettingActivity;
+import com.hxgd.collection.user.UserInfo;
+import com.hxgd.collection.user.UserInfoManager;
 import com.hxgd.collection.utils.ToastUtil;
 import com.hxgd.collection.view.LoadingDialog;
 import com.orhanobut.logger.Logger;
@@ -73,6 +74,9 @@ public class RecordListActivity extends AppCompatActivity {
 
     private AudioAdapter adapter = new AudioAdapter();
 
+
+    private UserInfo userInfo;
+
     public static void start(Context context) {
         Intent starter = new Intent(context, RecordListActivity.class);
         context.startActivity(starter);
@@ -84,6 +88,7 @@ public class RecordListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_record_list);
         ButterKnife.bind(this);
         initView();
+        userInfo = UserInfoManager.getInstance().getUserInfo();
 
     }
 
@@ -168,15 +173,15 @@ public class RecordListActivity extends AppCompatActivity {
         }
         builder.addFormDataPart("creator", item.getSpokesman());
         builder.addFormDataPart("informant.birthday", item.getBirth());
-        builder.addFormDataPart("informant.education", "研究生");
-        builder.addFormDataPart("informant.fatherLanguages", "汉语");
-        builder.addFormDataPart("informant.fatherNation", "汉族");
-        builder.addFormDataPart("informant.gender", "男");
-        builder.addFormDataPart("informant.maritalStatus", "未婚");
-        builder.addFormDataPart("informant.motherLanguages", "汉语");
-        builder.addFormDataPart("informant.motherNation", "汉族");
-        builder.addFormDataPart("informant.spouseNation", "没有配偶");
-        builder.addFormDataPart("informant.userName", "李四");
+        builder.addFormDataPart("informant.education", userInfo.getEducation());
+        builder.addFormDataPart("informant.fatherLanguages", userInfo.getFatherLauages());
+        builder.addFormDataPart("informant.fatherNation", userInfo.getFatherNation());
+        builder.addFormDataPart("informant.gender", userInfo.getGender());
+        builder.addFormDataPart("informant.maritalStatus", userInfo.getMaritalStatus());
+        builder.addFormDataPart("informant.motherLanguages", userInfo.getMotherLauages());
+        builder.addFormDataPart("informant.motherNation", userInfo.getMotherNation());
+        builder.addFormDataPart("informant.spouseNation", userInfo.getSpouseNation());
+        builder.addFormDataPart("informant.userName", userInfo.getUserName());
         builder.addFormDataPart("itemName", item.getItemName());
         builder.addFormDataPart("languageInfo.area", "中原区域");
         builder.addFormDataPart("languageInfo.dialect", "老家土话");
@@ -266,7 +271,7 @@ public class RecordListActivity extends AppCompatActivity {
 
     @OnClick(R.id.iv_setting)
     public void onIvSettingClick() {
-        UserInfoActivity.start(this);
+        SettingActivity.start(this);
     }
 
     @OnClick(R.id.iv_back_up)

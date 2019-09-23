@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/background_color"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/toolbar_setting"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_back" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="设置"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/logo_green" />
+
+    <RelativeLayout
+        android:id="@+id/rl_username"
+        style="@style/UserInfo_RelativeLayout"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="用户名"
+            android:textColor="@color/textColorBlack"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:drawableRight="@drawable/ic_arrow_right_small"
+            android:gravity="center_vertical"
+            android:text="汉族"
+            android:textSize="13sp" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/split_line" />
+
+    <RelativeLayout
+        android:id="@+id/rl_user_phone"
+        style="@style/UserInfo_RelativeLayout"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="手机号"
+            android:textColor="@color/textColorBlack"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_user_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:drawableRight="@drawable/ic_arrow_right_small"
+            android:gravity="center_vertical"
+            android:text="汉族"
+            android:textSize="13sp" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/split_line" />
+
+    <RelativeLayout
+        style="@style/UserInfo_RelativeLayout"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="采集设备"
+            android:textColor="@color/textColorBlack"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_devices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:drawableRight="@drawable/ic_arrow_right_small"
+            android:gravity="center_vertical"
+            android:text="汉族"
+            android:textSize="13sp" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/split_line" />
+
+
+    <com.qmuiteam.qmui.alpha.QMUIAlphaButton
+        android:id="@+id/btn_logout"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/rl_login"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/btn_login"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:text="退出登录"
+        android:textColor="@color/all_white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

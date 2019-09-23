@@ -20,5 +20,11 @@ public class AppUtils {
         String sd = sdf.format(new Date(timeStamp));   // 时间戳转换成时间
         return sd;
     }
+
+    public static int dip2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+
 }
 

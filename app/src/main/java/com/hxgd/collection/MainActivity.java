@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.hxgd.collection.activity.AudioActivity;
 import com.hxgd.collection.activity.RecordVideoActivity;
 import com.hxgd.collection.user.LoginActivity;
-import com.hxgd.collection.user.UserInfoActivity;
+import com.hxgd.collection.user.SettingActivity;
 
 import java.util.List;
 
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void toUserInfoClick(View view){
-        UserInfoActivity.start(this);
+        SettingActivity.start(this);
     }
 
     public void VideoClick(View view){

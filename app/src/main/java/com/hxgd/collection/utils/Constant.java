@@ -6,6 +6,6 @@ public interface Constant {
     String VIDEO_DIR = APP_CACHE_DIR + "/Video/";
 
 
-    String SP_USER_NAME = "username";
+    String SP_USER_INFO = "userInfo";
 
-}
+ }

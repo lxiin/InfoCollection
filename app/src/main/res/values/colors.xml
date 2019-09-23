@@ -52,21 +52,8 @@
     <color name="bg_000000">#00000000</color>
     <color name="base_white_30">#4DFFFFFF</color>
     <color name="base_white_100">#FFFFFFFF</color>
-
-    <color name="pickerview_bgColor_overlay">#60000000</color>
-    <color name="home_bgColor_overlay">#10000000</color>
-    <color name="pickerview_timebtn_nor">#057dff</color>
-    <color name="pickerview_timebtn_pre">#c2daf5</color>
-    <color name="pickerview_topbar_title">#000000</color>
-    <color name="pickerview_wheelview_textcolor_center">#2a2a2a</color>
-    <color name="pickerview_wheelview_textcolor_divider">#d5d5d5</color>
-    <color name="pickerview_wheelview_textcolor_out">#a8a8a8</color>
-    <color name="transparent60">#ffffff</color>
-    <color name="q">#3Ff98f1e</color>
-    <color name="w">#3fea7d08</color>
-    <color name="e">#3ff59327</color>
-    <color name="r">#3Ff98f1e</color>
-    <color name="F7F7F7">#FFF7F7F7</color>
-
+    <color name="textColorBlack">#202020</color>
     <color name="logo_green">#09af79</color>
+
+    <color name="split_line">#dcdcdc</color>
 </resources>
