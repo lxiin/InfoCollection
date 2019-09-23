@@ -5,4 +5,7 @@ public interface Constant {
     String AUDIO_DIR = APP_CACHE_DIR + "/Audio/";
     String VIDEO_DIR = APP_CACHE_DIR + "/Video/";
 
+
+    String SP_USER_NAME = "username";
+
 }

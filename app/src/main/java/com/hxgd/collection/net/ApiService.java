@@ -6,6 +6,7 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
+import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -20,7 +21,10 @@ public interface ApiService {
     @POST("language/upload")
     Observable<BaseEntity> uploadRecordFile(@Part List<MultipartBody.Part> parts);
 
-    @POST("language/login")
+    @POST("language/app/login")
     Observable<BaseEntity> login(@Query("code") String code, @Query("phone") String phone);
+
+    @GET("language/app/getValicateCode")
+    Observable<BaseEntity> getVerifyCode(@Query("phone") String phone);
 
 }

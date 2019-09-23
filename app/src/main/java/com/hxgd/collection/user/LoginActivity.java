@@ -14,13 +14,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.hxgd.collection.BuildConfig;
 import com.hxgd.collection.R;
 import com.hxgd.collection.activity.RecordListActivity;
 import com.hxgd.collection.bean.BaseEntity;
 import com.hxgd.collection.net.ApiFactory;
+import com.hxgd.collection.utils.Constant;
 import com.hxgd.collection.utils.CountDownButtonHelper;
+import com.hxgd.collection.utils.SP;
 import com.hxgd.collection.utils.ToastUtil;
 import com.hxgd.collection.view.LoadingDialog;
 import com.orhanobut.logger.Logger;
@@ -50,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView tvGetCode;
     @BindView(R.id.btn_login)
     Button btnLogin;
-    //测试pull
+
     CountDownButtonHelper countDownButtonHelper;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     public static final String[] PERMISSION_LIST = {
@@ -78,30 +81,80 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /**
+         * SP中存有用户名的就不需要再登录
+         * 反正登录 也是没有啥意义
+         */
+        if (!TextUtils.isEmpty(SP.get().getString(Constant.SP_USER_NAME))){
+            skip2RecordListAct();
+        }
+
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         if (BuildConfig.DEBUG){
-            etPhone.setText("12345678901");
+            etPhone.setText("17600172723");
             etVerifyCode.setText("1234");
         }
+
+
+
     }
     
     
     @OnClick(R.id.tv_get_code)
     public void onTvGetCodeClick(){
-        if (TextUtils.isEmpty(etPhone.getText().toString())){
+        String phoneNumber = etPhone.getText().toString().trim();
+        if (TextUtils.isEmpty(phoneNumber)){
             ToastUtil.show(this,"请输入手机号");
             return;
          }
-        if (etPhone.getText().toString().length() != 11){
+        if (phoneNumber.length() != 11){
             if (TextUtils.isEmpty(etPhone.getText().toString())){
                 ToastUtil.show(this,"请输入正确的手机号");
                 return;
             }
         }
 
+        getVerifyCode(phoneNumber);
+
+
+    }
+
+    private void getVerifyCode(String phone) {
         countDownButtonHelper = new CountDownButtonHelper(tvGetCode,"重新获取",60,1);
         countDownButtonHelper.start();
+        LoadingDialog loadingDialog = new LoadingDialog(LoginActivity.this,"正在获取验证码...");
+        loadingDialog.show();
+        ApiFactory.getApiService().getVerifyCode(phone)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<BaseEntity>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        compositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onNext(BaseEntity baseEntity) {
+                        loadingDialog.dismiss();
+                        if (baseEntity.isSuccessful()){
+                            ToastUtil.show(LoginActivity.this,"获取验证码成功");
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        loadingDialog.dismiss();
+                        ToastUtil.show(LoginActivity.this,"获取验证码失败");
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
 
     }
 
@@ -120,22 +173,7 @@ public class LoginActivity extends AppCompatActivity {
             countDownButtonHelper.cancel();
         }
 
-//        doLogin();
-
-
-        LoadingDialog loadingDialog = new LoadingDialog(LoginActivity.this,"正在登录...");
-        loadingDialog.show();
-        btnLogin.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Logger.e("测试一下git");
-                loadingDialog.dismiss();
-                RecordListActivity.start(LoginActivity.this);
-                finish();
-            }
-        },800);
-
-
+        doLogin();
 
     }
 
@@ -159,13 +197,25 @@ public class LoginActivity extends AppCompatActivity {
                     public void onNext(BaseEntity baseEntity) {
                         loadingDialog.dismiss();
                         Logger.d(baseEntity.toString());
-                        ToastUtil.show(LoginActivity.this,"登录成功");
+                        /**
+                         * 他这个接口只返回了code码 msg迟早是空的
+                         * 在这我只判断200  其余的全部认为是登录失败
+                         * 什么原因失败的 我也不知道
+                         */
+                        if (baseEntity.isSuccessful()){
+                            ToastUtil.show(LoginActivity.this,"登录成功");
+                            SP.get().putString(Constant.SP_USER_NAME,phone);
+                            skip2RecordListAct();
+                        }else{
+                            ToastUtil.show(LoginActivity.this,"登录失败");
+                        }
 
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         loadingDialog.dismiss();
+                        Logger.e("登录失败---->"+e.getLocalizedMessage());
                         ToastUtil.show(LoginActivity.this,"登录失败");
 
 
@@ -177,6 +227,11 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
 
+    }
+
+    private void skip2RecordListAct() {
+        RecordListActivity.start(LoginActivity.this);
+        finish();
     }
 
     private void requestPermission() {
@@ -249,5 +304,18 @@ public class LoginActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         compositeDisposable.clear();
+    }
+
+
+    long mExitTime = 0;
+
+    @Override
+    public void onBackPressed() {
+        if ((System.currentTimeMillis() - mExitTime) > 2000) {
+            ToastUtil.show(this, "再按一次,退出应用");
+            mExitTime = System.currentTimeMillis();
+        } else {
+            ActivityCompat.finishAffinity(this);
+        }
     }
 }
