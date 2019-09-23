@@ -16,5 +16,57 @@
     <color name="tab_strip">#B42929</color>
 
     <color name="status_bar">#555555</color>
+    <color name="itemcolor">#ffff8400</color>
+    <color name="transparent">#00000000</color>
+    <color name="all_white">#ffffff</color>
+    <color name="poilce">#FFEF605F</color>
+    <color name="all_black">#000000</color>
+    <color name="gray_eeeeee">#EEEEEE</color>
+    <color name="gray_888888">#888888</color>
+    <color name="gray_7b7b7b">#7b7b7b</color>
+    <color name="gray_d7d7d7">#d7d7d7</color>
+    <color name="gray_d2d2d2">#d2d2d2</color>
+    <color name="gray_dfdfdf">#dfdfdf</color>
+    <color name="gray_bfbfbf">#BFBFBF</color>
+    <color name="gray_f7f7f7">#f7f7f7</color>
+    <color name="gray_9b9b9a">#9b9b9a</color>
+    <color name="black_7d7d7d">#7D7D7D</color>
+    <color name="black_434343">#434343</color>
+    <color name="black_333333">#333333</color>
+    <color name="black_313131">#313131</color>
+    <color name="red_ff0000">#FF0000</color>
+    <color name="red_ff6661">#FF6661</color>
+    <color name="orange_de6014">#DE6014</color>
+    <color name="orange_ff8400">#FF8400</color>
+    <color name="orange_ff8401">#3Ff98f1e</color>
+    <color name="background_color">#3ffcd5ab</color>
+    <color name="orange_fff6ee">#FFF6EE</color>
+    <color name="orange_fdcd99">#fdcd99</color>
+    <color name="green_82c307">#82c307</color>
+    <color name="green_27a225">#27A225</color>
+    <color name="green_83c756">#83C756</color>
+    <color name="invoice_C1E0B6">#FFC1E0B6</color>
+    <color name="invoice_FFD09D">#FFFFD09D</color>
+    <color name="blue_5bb9e7">#5bb9e7</color>
+    <color name="white_fffaf5">#fffaf5</color>
+    <color name="bg_000000">#00000000</color>
+    <color name="base_white_30">#4DFFFFFF</color>
+    <color name="base_white_100">#FFFFFFFF</color>
 
+    <color name="pickerview_bgColor_overlay">#60000000</color>
+    <color name="home_bgColor_overlay">#10000000</color>
+    <color name="pickerview_timebtn_nor">#057dff</color>
+    <color name="pickerview_timebtn_pre">#c2daf5</color>
+    <color name="pickerview_topbar_title">#000000</color>
+    <color name="pickerview_wheelview_textcolor_center">#2a2a2a</color>
+    <color name="pickerview_wheelview_textcolor_divider">#d5d5d5</color>
+    <color name="pickerview_wheelview_textcolor_out">#a8a8a8</color>
+    <color name="transparent60">#ffffff</color>
+    <color name="q">#3Ff98f1e</color>
+    <color name="w">#3fea7d08</color>
+    <color name="e">#3ff59327</color>
+    <color name="r">#3Ff98f1e</color>
+    <color name="F7F7F7">#FFF7F7F7</color>
+
+    <color name="logo_green">#09af79</color>
 </resources>

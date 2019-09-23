@@ -6,8 +6,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,6 +35,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnTextChanged;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -53,6 +56,13 @@ public class LoginActivity extends AppCompatActivity {
     TextView tvGetCode;
     @BindView(R.id.btn_login)
     Button btnLogin;
+    @BindView(R.id.iv_clearaccount)
+    ImageView mClearIv;
+
+
+    private String mAccount;
+    private String mAuthcode;
+
 
     CountDownButtonHelper countDownButtonHelper;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
@@ -93,8 +103,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         if (BuildConfig.DEBUG){
-            etPhone.setText("17600172723");
-            etVerifyCode.setText("1234");
+            etPhone.setText("13520663178");
+            etVerifyCode.setText("");
         }
 
 
@@ -317,5 +327,36 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             ActivityCompat.finishAffinity(this);
         }
+    }
+    @OnClick(R.id.iv_clearaccount)
+    void clearAccount() {
+        etPhone.setText("");
+    }
+    private void checkInfo() {
+        if (mAccount.length() == 11 && !isEmpty(mAuthcode)) {
+            btnLogin.setEnabled(true);
+        } else {
+            btnLogin.setEnabled(false);
+        }
+    }
+
+    @OnTextChanged(value = R.id.et_phone, callback = OnTextChanged.Callback.TEXT_CHANGED)
+    void onAccountChange(CharSequence sequence, int start, int before, int count) {
+        mAccount = String.valueOf(sequence);
+        if (!isEmpty(mAccount)) {
+            mClearIv.setVisibility(View.VISIBLE);
+        } else {
+            mClearIv.setVisibility(View.INVISIBLE);
+        }
+        checkInfo();
+    }
+
+    @OnTextChanged(value = R.id.et_verify_code, callback = OnTextChanged.Callback.TEXT_CHANGED)
+    void onAuthcodeChange(CharSequence sequence, int start, int before, int count) {
+        mAuthcode = String.valueOf(sequence);
+        checkInfo();
+    }
+    public static boolean isEmpty(CharSequence str) {
+        return (str == null) || (str.length() == 0);
     }
 }

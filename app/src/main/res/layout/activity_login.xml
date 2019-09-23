@@ -3,98 +3,152 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_color">
 
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
     <ImageView
-        android:layout_marginTop="70dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:id="@+id/icon_cj"
+        android:layout_marginTop="40dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_gravity="center_horizontal"
-        android:src="@mipmap/app_icon"
+        android:src="@mipmap/ic_launcher_foreground"
         />
-
-    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundLinearLayout
+    <TextView
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        app:qmui_borderWidth="1px"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-         android:layout_marginTop="40dp"
-        app:qmui_borderColor="#dcdcdc"
-        android:layout_height="45dp">
+        android:gravity="center"
+        android:textSize="21dp"
+        android:layout_height="wrap_content"
+        android:text="多语言数据采集系统"
+        android:textColor="@color/logo_green"/>
+</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rl_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/icon_cj"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/bg_card"
+        android:paddingBottom="10dp">
 
-        <EditText
+        <TextView
+            android:id="@+id/tv_accountmessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/ic_phoneno"
+            android:drawablePadding="12dp"
+            android:gravity="center_vertical"
+            android:text="手机号"
+            android:textColor="@color/all_black"
+            android:textSize="13sp"/>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/et_phone"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="手机号"
-            android:singleLine="true"
-            android:maxLength="11"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tv_accountmessage"
+            android:layout_below="@+id/tv_accountmessage"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="5dp"
+            android:hint="请输入您的手机号码"
             android:inputType="number"
-            android:digits="0123456789"
-            android:layout_marginLeft="5dp"
-            android:background="@null"
-            />
+            android:textCursorDrawable="@drawable/shape_materia_edittext"
+            android:textSize="18sp"
+            android:maxLength="11"
+            app:met_baseColor="@color/gray_bfbfbf"
+            app:met_errorColor="@color/red_ff0000"
+            app:met_maxCharacters="11"
+            app:met_primaryColor="@color/orange_ff8400"
+            app:met_singleLineEllipsis="true"
+            app:met_textColor="@color/orange_ff8400"
+            app:met_textColorHint="@color/gray_bfbfbf"
+            app:met_underlineColor="@color/gray_eeeeee"/>
 
+        <ImageView
+            android:id="@+id/iv_clearaccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/et_phone"
+            android:padding="12dp"
+            android:src="@drawable/ic_clear"
+            android:visibility="invisible"/>
+        <TextView
+            android:id="@+id/tv_authcodemessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_phone"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:drawableLeft="@drawable/ic_authcode"
+            android:drawablePadding="12dp"
+            android:gravity="center_vertical"
+            android:text="验证码"
+            android:textColor="@color/all_black"
+            android:textSize="13sp"/>
 
-    </com.qmuiteam.qmui.widget.roundwidget.QMUIRoundLinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="50dp"
-        android:orientation="horizontal"
-        android:layout_height="45dp">
-
-
-
-    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundLinearLayout
-        android:layout_width="0dp"
-        android:layout_weight="2"
-        android:layout_marginRight="15dp"
-        app:qmui_borderWidth="1px"
-        app:qmui_borderColor="#dcdcdc"
-        android:layout_height="45dp">
-
-        <EditText
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/et_verify_code"
             android:layout_width="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_height="match_parent"
-            android:hint="验证码"
-            android:singleLine="true"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/et_phone"
+            android:layout_below="@id/tv_authcodemessage"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="5dp"
+            android:hint="请输入验证码"
             android:inputType="number"
-            android:maxLength="8"
-            android:background="@null"
-            />
+            android:textCursorDrawable="@drawable/shape_materia_edittext"
+            android:textSize="18sp"
+            android:maxLength="6"
+            app:met_baseColor="@color/gray_bfbfbf"
+            app:met_primaryColor="@color/orange_ff8400"
+            app:met_singleLineEllipsis="true"
+            app:met_textColor="@color/orange_ff8400"
+            app:met_textColorHint="@color/gray_bfbfbf"
+            app:met_underlineColor="@color/gray_eeeeee"/>
 
-    </com.qmuiteam.qmui.widget.roundwidget.QMUIRoundLinearLayout>
+        <TextView
+            android:id="@+id/tv_get_code"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@id/et_verify_code"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/et_verify_code"
+            android:layout_marginBottom="24dp"
+            android:layout_marginRight="12dp"
+            android:gravity="center"
+            android:text="获取验证码"
+            android:textColor="@color/green_82c307"
+            android:textSize="15sp"/>
 
-    <com.qmuiteam.qmui.alpha.QMUIAlphaTextView
-        android:id="@+id/tv_get_code"
-        android:layout_width="0dp"
-        android:layout_weight="1.5"
-        android:background="@android:color/holo_blue_light"
-        android:gravity="center"
-        android:textColor="#FFF"
-        android:layout_height="match_parent"
-        android:text="获取验证码"
-        />
-
-    </LinearLayout>
+    </RelativeLayout>
 
     <com.qmuiteam.qmui.alpha.QMUIAlphaButton
         android:id="@+id/btn_login"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:text="登录"
-        android:textColor="#FFF"
-        android:background="@android:color/holo_blue_light"
-        />
+        android:layout_height="45dp"
+        android:layout_below="@id/rl_login"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/btn_login"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:text="验证并登陆"
+        android:textColor="@color/all_white"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
 
 
 </LinearLayout>

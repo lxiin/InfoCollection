@@ -1,93 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:orientation="vertical">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp">
+
+                <ImageView
+                    android:id="@+id/iv_add"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/ic_add" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="数据列表"
+                    android:textColor="#202020"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_alignParentBottom="true"
+                    android:background="#09af79" />
+
+            </RelativeLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp">
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior">
 
             <ImageView
-                android:id="@+id/iv_add"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/ic_add"
-                android:layout_alignParentLeft="true"
+                android:id="@+id/iv_setting"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginLeft="15dp"
-                android:layout_centerVertical="true" />
+                android:layout_marginBottom="15dp"
+                android:src="@drawable/ic_setting" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_height="wrap_content"
-                android:textColor="#202020"
-                android:textSize="17sp"
-                android:text="数据列表"
-                />
-
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_alignParentBottom="true"
-                android:background="#dcdcdc"
-                />
+            <ImageView
+                android:id="@+id/iv_back_up"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
+                android:src="@drawable/ic_backup"
+                android:visibility="gone" />
 
         </RelativeLayout>
-
-
-
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_gravity="bottom"
-        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
-        android:layout_alignParentBottom="true"
-
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/iv_setting"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginBottom="15dp"
-            android:src="@drawable/ic_setting"
-            />
-
-        <ImageView
-            android:id="@+id/iv_back_up"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_backup"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="15dp"
-            />
-
-    </RelativeLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

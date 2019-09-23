@@ -1,43 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:orientation="vertical">
 
 
     <ImageView
         android:id="@+id/iv_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_back"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="15dp"
-        />
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_back" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:paddingLeft="30dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:layout_height="wrap_content">
+        android:orientation="horizontal"
+        android:paddingLeft="30dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_user_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"
-            />
+            android:src="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/tv_user_name"
             android:layout_width="wrap_content"
-            android:layout_gravity="center_vertical"
             android:layout_height="wrap_content"
-            android:text="姓名:张三"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="25dp"
-            />
+            android:text="姓名:张三" />
 
     </LinearLayout>
 
@@ -47,8 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
-        tools:text="采集设备"
-        />
+        tools:text="采集设备：" />
 
     <TextView
         android:id="@+id/tv_phone"
@@ -56,21 +53,29 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
-        tools:text="采集设备"
-        />
+        tools:text="电话：" />
 
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
 
     <com.qmuiteam.qmui.alpha.QMUIAlphaButton
         android:id="@+id/btn_logout"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_height="45dp"
+        android:layout_below="@id/rl_login"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/btn_login"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="center"
         android:text="退出登录"
-        android:textColor="#FFF"
-        android:background="@android:color/holo_blue_light"
-        />
-
+        android:textColor="@color/all_white"
+        android:textSize="20sp"
+        android:layout_marginBottom="60dp"
+        android:textStyle="bold" />
 
 </LinearLayout>
