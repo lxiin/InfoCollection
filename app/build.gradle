@@ -47,6 +47,8 @@ dependencies {
 
     implementation 'com.melnykov:floatingactionbutton:1.1.0'
 
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
+
     implementation recyclerView
     implementation easypermissions
     implementation stetho
