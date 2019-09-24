@@ -54,6 +54,7 @@
     <color name="base_white_100">#FFFFFFFF</color>
     <color name="textColorBlack">#202020</color>
     <color name="logo_green">#09af79</color>
+    <color name="logo_green_more">#27A225</color>
 
     <color name="split_line">#dcdcdc</color>
 </resources>

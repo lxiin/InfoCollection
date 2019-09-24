@@ -21,7 +21,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.addresswheel_master.R2;
 import com.hxgd.collection.R;
 import com.hxgd.collection.audio.PlaybackFragment;
-import com.hxgd.collection.audio.RecordingDialog;
 import com.hxgd.collection.db.DBHelper;
 import com.hxgd.collection.event.RecordEvent;
 import com.hxgd.collection.user.UserInfoManager;
@@ -109,14 +108,7 @@ public class RecordAddActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_audio)
     public void onBtnAudioClick(){
-        RecordingDialog dialog = new RecordingDialog(RecordAddActivity.this);
-        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-            }
-        });
-        dialog.showDialog();
-
+        RecordingActivity.start(this);
     }
 
     @SuppressLint("StaticFieldLeak")

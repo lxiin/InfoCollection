@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">多语言数据采集系统</string>
+    <string name="recording_started">开始录音</string>
+    <string name="record_in_progress">正在录音</string>
+    <string name="record_prompt">点击按钮开始录音</string>
+    <string name="pause_recording_button">暂停</string>
+    <string name="resume_recording_button">继续</string>
 </resources>

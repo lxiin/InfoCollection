@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +24,6 @@ import com.hxgd.collection.R;
 import com.hxgd.collection.audio.AudioAdapter;
 import com.hxgd.collection.audio.AudioRecordItem;
 import com.hxgd.collection.audio.PlaybackFragment;
-import com.hxgd.collection.audio.RecordingDialog;
 import com.hxgd.collection.utils.ToastUtil;
 
 import java.io.File;
@@ -100,14 +100,7 @@ public class AudioActivity extends AppCompatActivity {
         tvAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RecordingDialog dialog = new RecordingDialog(AudioActivity.this);
-                dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                    @Override
-                    public void onDismiss(DialogInterface dialogInterface) {
-                        getData();
-                    }
-                });
-                dialog.showDialog();
+                RecordingActivity.start(AudioActivity.this);
 
             }
         });
