@@ -24,6 +24,7 @@ import com.hxgd.collection.audio.PlaybackFragment;
 import com.hxgd.collection.audio.RecordingDialog;
 import com.hxgd.collection.db.DBHelper;
 import com.hxgd.collection.event.RecordEvent;
+import com.hxgd.collection.user.UserInfoManager;
 import com.hxgd.collection.utils.ToastUtil;
 import com.orhanobut.logger.Logger;
 
@@ -59,10 +60,7 @@ public class RecordAddActivity extends AppCompatActivity {
     EditText etName;
     @BindView(R.id.et_type)
     EditText etType;
-    @BindView(R.id.et_user)
-    EditText etUser;
-    @BindView(R.id.et_birth)
-    EditText etBirth;
+
     @BindView(R.id.tv_place)
     TextView tvPlace;
     @BindView(R.id.iv_play)
@@ -134,8 +132,7 @@ public class RecordAddActivity extends AppCompatActivity {
 
         String itemName = etName.getText().toString().trim();
         String type = etType.getText().toString().trim();
-        String spokerman = etName.getText().toString();
-        String birth = etBirth.getText().toString();
+
         String place = tvPlace.getText().toString();
         if (TextUtils.isEmpty(itemName)){
             ToastUtil.show(this,"请输入名称");
@@ -145,14 +142,7 @@ public class RecordAddActivity extends AppCompatActivity {
             ToastUtil.show(this,"请输入语言类别");
             return;
         }
-        if (TextUtils.isEmpty(spokerman)){
-            ToastUtil.show(this,"请输入发言人名字");
-            return;
-        }
-        if (TextUtils.isEmpty(birth)){
-            ToastUtil.show(this,"请输入生日");
-            return;
-        }
+
         if (place.equals("点击开始选择地区")){
             ToastUtil.show(this,"请选择地区");
             return;
@@ -164,7 +154,8 @@ public class RecordAddActivity extends AppCompatActivity {
             protected Void doInBackground(Void... voids) {
                 DBHelper.getInstance(RecordAddActivity.this).addRecording(
                         recordEvent.getFileName(),recordEvent.getFilePath(),recordEvent.getTime(),
-                        recordEvent.getType(),itemName,type,spokerman,birth,place
+                        recordEvent.getType(),itemName,type, UserInfoManager.getInstance().getCurrentUserInfo().getUserName()
+                        ,UserInfoManager.getInstance().getCurrentUserInfo().getUserBirthDay(),place
                 );
                 return null;
             }

@@ -98,7 +98,7 @@ public class UserInfoActivity extends AppCompatActivity {
     }
 
     private void initUserInfo() {
-        UserInfo userInfo = UserInfoManager.getInstance().getUserInfo();
+        UserInfo userInfo = UserInfoManager.getInstance().getCurrentUserInfo();
         tvUserPhone.setText(userInfo.getUserPhone());
         tvUserName.setText(userInfo.getUserName());
         tvGender.setText(userInfo.getGender());
@@ -398,6 +398,13 @@ public class UserInfoActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+
+        if (TextUtils.isEmpty(tvUserName.getText().toString()) && TextUtils.isEmpty(tvGender.getText().toString())
+                && TextUtils.isEmpty(tvEducation.getText()) && TextUtils.isEmpty(tvBirthday.getText().toString())){
+            ToastUtil.show(this,"请补全信息~");
+            return;
+        }
+
         if (!TextUtils.isEmpty(extra)){
             setResult(LoginActivity.RESULT_CODE);
         }

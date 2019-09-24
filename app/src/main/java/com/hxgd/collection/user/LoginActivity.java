@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
          * SP中存有用户名的就不需要再登录
          * 反正登录 也是没有啥意义
          */
-        if (!TextUtils.isEmpty(UserInfoManager.getInstance().getUserInfo().getUserPhone())){
+        if (!TextUtils.isEmpty(UserInfoManager.getInstance().getCurrentUserInfo().getUserPhone())){
             skip2RecordListAct();
         }
 

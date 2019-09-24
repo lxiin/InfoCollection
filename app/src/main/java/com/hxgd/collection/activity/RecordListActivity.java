@@ -88,7 +88,7 @@ public class RecordListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_record_list);
         ButterKnife.bind(this);
         initView();
-        userInfo = UserInfoManager.getInstance().getUserInfo();
+        userInfo = UserInfoManager.getInstance().getCurrentUserInfo();
 
     }
 
@@ -190,7 +190,7 @@ public class RecordListActivity extends AppCompatActivity {
         builder.addFormDataPart("languageInfo.population", "320000");
         builder.addFormDataPart("recordingDevice", Build.MANUFACTURER + " " + Build.MODEL);
         builder.addFormDataPart("recordingPlace", item.getPlace());
-        builder.addFormDataPart("recordingTime", "2019-8-19 15:29:19");
+        builder.addFormDataPart("recordingTime",item.getCreateTime());
         List<MultipartBody.Part> parts = builder.build().parts();
 
         LoadingDialog loadingDialog = new LoadingDialog(RecordListActivity.this, "正在上传文件...");

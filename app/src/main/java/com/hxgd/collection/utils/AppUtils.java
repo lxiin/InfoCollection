@@ -6,6 +6,7 @@ import android.view.WindowManager;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class AppUtils {
     /** 获取屏幕宽度 */
@@ -24,6 +25,16 @@ public class AppUtils {
     public static int dip2px(Context context, float dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
+    }
+
+    /**
+     * 获取当前的 年月日 时分秒
+     * 格式yyyy-MM-dd HH:mm:ss
+     * @param timeStamp
+     * @return
+     */
+    public static String getCurrentTime(long timeStamp) {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA).format(new Date(timeStamp));
     }
 
 }

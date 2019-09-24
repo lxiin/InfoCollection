@@ -12,14 +12,13 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
+import com.hxgd.collection.BuildConfig;
 import com.hxgd.collection.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SettingActivity extends AppCompatActivity {
 
@@ -36,6 +35,8 @@ public class SettingActivity extends AppCompatActivity {
     RelativeLayout rlUserName;
     @BindView(R.id.rl_user_phone)
     RelativeLayout rlUserPhone;
+    @BindView(R.id.tv_version)
+    TextView tvVersion;
     @BindView(R.id.btn_logout)
     Button btnLogout;
 
@@ -48,7 +49,7 @@ public class SettingActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        tvUserName.setText(UserInfoManager.getInstance().getUserInfo().getUserName());
+        tvUserName.setText(UserInfoManager.getInstance().getCurrentUserInfo().getUserName());
     }
 
     @Override
@@ -65,9 +66,10 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        tvUserName.setText(UserInfoManager.getInstance().getUserInfo().getUserName());
+        tvUserName.setText(UserInfoManager.getInstance().getCurrentUserInfo().getUserName());
         tvDevices.setText( Build.MANUFACTURER + Build.MODEL);
-        tvUserPhone.setText(UserInfoManager.getInstance().getUserInfo().getUserPhone());
+        tvUserPhone.setText(UserInfoManager.getInstance().getCurrentUserInfo().getUserPhone());
+        tvVersion.setText(BuildConfig.VERSION_NAME);
     }
 
 
