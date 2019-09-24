@@ -72,7 +72,7 @@
             android:layout_marginLeft="15dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="开始视频"
+            android:text="开始录视频"
             android:textColor="@color/logo_green"
             app:qmui_borderColor="@color/logo_green" />
     </LinearLayout>

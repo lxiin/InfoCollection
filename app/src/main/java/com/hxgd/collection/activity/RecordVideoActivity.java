@@ -185,7 +185,7 @@ public class RecordVideoActivity extends AppCompatActivity implements SurfaceHol
 
 
                 mStartedFlg = true;
-                mBtnStartStop.setText("停止");
+                mBtnStartStop.setText("结束录制");
             }
         }catch (Exception e){
             Log.e("录视频初始化失败---->",e.getMessage());
