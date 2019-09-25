@@ -31,6 +31,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+@Deprecated
 public class AudioActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
@@ -84,7 +85,7 @@ public class AudioActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(List<AudioRecordItem> audioRecordItems) {
                 super.onPostExecute(audioRecordItems);
-                adapter.setNewData(audioRecordItems);
+//                adapter.setNewData(audioRecordItems);
 
             }
         }.execute();

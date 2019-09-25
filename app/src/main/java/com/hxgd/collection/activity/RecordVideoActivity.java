@@ -19,7 +19,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.hxgd.collection.db.DBHelper;
 import com.hxgd.collection.R;
 import com.hxgd.collection.event.RecordEvent;
 import com.hxgd.collection.utils.Constant;
@@ -56,8 +55,6 @@ public class RecordVideoActivity extends AppCompatActivity implements SurfaceHol
     private MediaPlayer mediaPlayer;
     private String filePath;
     private int text = 0;
-
-    private DBHelper mDatabase;
     private String fileName;
     private long mStartingTimeMillis = 0;
 
@@ -87,7 +84,6 @@ public class RecordVideoActivity extends AppCompatActivity implements SurfaceHol
         setContentView(R.layout.activity_record_video);
         ButterKnife.bind(this);
 
-        mDatabase = DBHelper.getInstance(getApplicationContext());
 
 
         SurfaceHolder holder = mSurfaceView.getHolder();

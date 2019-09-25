@@ -68,37 +68,6 @@
         android:layout_height="1dp"
         android:background="@color/split_line" />
 
-    <RelativeLayout
-        android:id="@+id/rl_user_phone"
-        style="@style/UserInfo_RelativeLayout"
-        android:background="@color/white">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="手机号"
-            android:textColor="@color/textColorBlack"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/tv_user_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:drawableRight="@drawable/ic_arrow_right_small"
-            android:gravity="center_vertical"
-            android:text="汉族"
-            android:textSize="13sp" />
-
-    </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/split_line" />
 
     <RelativeLayout
         style="@style/UserInfo_RelativeLayout"

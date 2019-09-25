@@ -8,6 +8,10 @@ import com.google.gson.Gson;
 import com.hxgd.collection.App;
 import com.orhanobut.logger.Logger;
 
+/**
+ * 这个东西现在没有啥用了 到时候把它就删了吧。
+ */
+@Deprecated
 public class UserInfoManager {
 
     private static final String TAG = "UserInfo";

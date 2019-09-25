@@ -145,7 +145,7 @@
         android:background="@drawable/btn_login"
         android:foreground="?android:attr/selectableItemBackground"
         android:gravity="center"
-        android:text="验证并登陆"
+        android:text="验证并登录"
         android:textColor="@color/all_white"
         android:textSize="20sp"
         android:textStyle="bold"/>

@@ -7,7 +7,7 @@ import android.os.Environment;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.hxgd.collection.db.DBHelper;
+
 import com.hxgd.collection.event.RecordEvent;
 import com.hxgd.collection.utils.Constant;
 import com.orhanobut.logger.Logger;
@@ -25,7 +25,6 @@ public class RecordingService extends Service {
     private String mFilePath;
 
     private MediaRecorder mRecorder;
-    private DBHelper mDatabase;
 
     private long mStartingTimeMillis = 0;
 
@@ -53,7 +52,6 @@ public class RecordingService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        mDatabase = DBHelper.getInstance(getApplicationContext());
     }
 
     private void startRecording() {

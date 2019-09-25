@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sl_info"
+    android:visibility="gone"
+    tools:visibility="visible"
+    android:background="@color/background_color"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_play"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_audio" />
+
+        <LinearLayout
+            android:id="@+id/ll_main"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/split_line" />
+
+<!--                <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="2px"-->
+<!--                    android:background="@color/logo_green" />-->
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_item_name"
+                    style="@style/UserInfo_RelativeLayout">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="名称"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_itemname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/ic_arrow_right_small"
+                        android:gravity="center_vertical"
+                        android:textSize="13sp"
+                        android:text="点击输入记录名称" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/split_line" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_laguage_type"
+                    style="@style/UserInfo_RelativeLayout">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="语言类别"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_laguage_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/ic_arrow_right_small"
+                        android:gravity="center_vertical"
+                        android:textSize="13sp"
+                        android:text="点击输入语言类别" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/split_line" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_place"
+                    style="@style/UserInfo_RelativeLayout">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="地点"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_place"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/ic_arrow_right_small"
+                        android:gravity="center_vertical"
+                        android:textSize="13sp"
+                        android:text="点击输入发言地点" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/split_line" />
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_spoker"
+                    style="@style/UserInfo_RelativeLayout">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="发言人"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_spoker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/ic_arrow_right_small"
+                        android:gravity="center_vertical"
+                        android:textSize="13sp"
+                        android:text="点击输入发言人" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/split_line" />
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_population"
+                    style="@style/UserInfo_RelativeLayout">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="使用人数"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_population"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/ic_arrow_right_small"
+                        android:gravity="center_vertical"
+                        android:textSize="13sp"
+                        android:text="点击输入使用人数" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/split_line" />
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_gender"
+                    style="@style/UserInfo_RelativeLayout">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="性别"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_gender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/ic_arrow_right_small"
+                        android:gravity="center_vertical"
+                        android:textSize="13sp"
+                        android:text="点击输入性别" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/split_line" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_education"
+                    style="@style/UserInfo_RelativeLayout"
+                    android:background="@color/background_color">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="教育程度"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_education"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/textView2"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:drawableRight="@drawable/ic_arrow_right_small"
+                        android:gravity="center_vertical"
+                        android:textSize="13sp"
+                        android:text="点击输入教育程度" />
+                </RelativeLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/split_line" />
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_birthday"
+                    style="@style/UserInfo_RelativeLayout"
+                    android:background="@color/background_color">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="生日"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="15sp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_birthday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/ic_arrow_right_small"
+                        android:gravity="center_vertical"
+                        android:textSize="13sp"
+                        android:text="点击输入生日" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/split_line" />
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_faher_laguage"
+                    style="@style/UserInfo_RelativeLayout"
+                    android:background="@color/background_color">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="父亲语种"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="15sp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_faher_laguage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/ic_arrow_right_small"
+                        android:gravity="center_vertical"
+                        android:textSize="13sp"
+                        android:text="点击输入父亲语种" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/split_line" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_father_nation"
+                    style="@style/UserInfo_RelativeLayout"
+                    android:background="@color/background_color">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="父亲民族"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="15sp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_father_nation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/ic_arrow_right_small"
+                        android:gravity="center_vertical"
+                        android:text="点击输入父亲民族"
+                        android:textSize="13sp" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/split_line" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_mother_lauguage"
+                    style="@style/UserInfo_RelativeLayout"
+                    android:background="@color/background_color">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="母亲语种"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="15sp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_mother_laguage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/ic_arrow_right_small"
+                        android:gravity="center_vertical"
+                        android:text="点击输入母亲语种"
+                        android:textSize="13sp" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/split_line" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_mother_nation"
+                    style="@style/UserInfo_RelativeLayout"
+                    android:background="@color/background_color">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="母亲民族"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="15sp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_mother_nation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/ic_arrow_right_small"
+                        android:gravity="center_vertical"
+                        android:text="点击输入母亲民族"
+                        android:textSize="13sp" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/split_line" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_marital_status"
+                    style="@style/UserInfo_RelativeLayout"
+                    android:background="@color/background_color">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="婚姻状况"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="15sp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_marital_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/ic_arrow_right_small"
+                        android:gravity="center_vertical"
+                        android:text="点击输入婚姻状况"
+                        android:textSize="13sp" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/split_line" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_spousenation"
+                    style="@style/UserInfo_RelativeLayout"
+                    android:background="@color/background_color">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="配偶民族"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_spousenation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/ic_arrow_right_small"
+                        android:gravity="center_vertical"
+                        android:text="点击输入配偶民族"
+                        android:textSize="13sp" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/split_line" />
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="20dp"
+                android:text="修改"
+                android:visibility="gone"
+
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

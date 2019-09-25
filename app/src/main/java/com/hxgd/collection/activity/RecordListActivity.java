@@ -21,21 +21,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hxgd.collection.R;
 import com.hxgd.collection.audio.AudioAdapter;
-import com.hxgd.collection.audio.AudioRecordItem;
 import com.hxgd.collection.audio.PlaybackFragment;
 import com.hxgd.collection.bean.BaseEntity;
-import com.hxgd.collection.db.DBHelper;
+import com.hxgd.collection.db.RecordDataBase;
+import com.hxgd.collection.db.RecordEntity;
 import com.hxgd.collection.net.ApiFactory;
 import com.hxgd.collection.user.SettingActivity;
 import com.hxgd.collection.user.UserInfo;
 import com.hxgd.collection.user.UserInfoManager;
+import com.hxgd.collection.utils.Constant;
+import com.hxgd.collection.utils.SP;
 import com.hxgd.collection.utils.ToastUtil;
 import com.hxgd.collection.view.LoadingDialog;
 import com.orhanobut.logger.Logger;
 
 import java.io.File;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -74,9 +74,6 @@ public class RecordListActivity extends AppCompatActivity {
 
     private AudioAdapter adapter = new AudioAdapter();
 
-
-    private UserInfo userInfo;
-
     public static void start(Context context) {
         Intent starter = new Intent(context, RecordListActivity.class);
         context.startActivity(starter);
@@ -88,7 +85,6 @@ public class RecordListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_record_list);
         ButterKnife.bind(this);
         initView();
-        userInfo = UserInfoManager.getInstance().getCurrentUserInfo();
 
     }
 
@@ -107,7 +103,7 @@ public class RecordListActivity extends AppCompatActivity {
         adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                AudioRecordItem item = (AudioRecordItem) adapter.getData().get(position);
+                RecordEntity item = (RecordEntity) adapter.getData().get(position);
                 File file = new File(item.getFilePath());
                 if (!file.exists()) {
                     Toast.makeText(RecordListActivity.this, "文件找不到了", Toast.LENGTH_SHORT).show();
@@ -124,7 +120,7 @@ public class RecordListActivity extends AppCompatActivity {
                                     }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    delAudioItem((AudioRecordItem) adapter.getData().get(position));
+                                    delAudioItem((RecordEntity)adapter.getData().get(position));
                                 }
                             }).show();
                             break;
@@ -133,8 +129,8 @@ public class RecordListActivity extends AppCompatActivity {
                             break;
                         case R.id.ll_layout:
                         case R.id.iv_type:
-                            if (item.getType() == 1) {
-                                PlaybackFragment.newInstance(item.getName(),item.getFilePath(),item.getLength()).show(getSupportFragmentManager(), "play_audio");
+                            if (item.getRecordType() == 1) {
+                                PlaybackFragment.newInstance(item.getFileName(),item.getFilePath(),item.getRecordTime()).show(getSupportFragmentManager(), "play_audio");
                             } else {
                                 VideoPlayActivity.start(RecordListActivity.this, item.getFilePath());
                             }
@@ -148,7 +144,7 @@ public class RecordListActivity extends AppCompatActivity {
     }
 
     private void uploadRecord(BaseQuickAdapter adapter, int position) {
-        AudioRecordItem item = (AudioRecordItem) adapter.getData().get(position);
+         RecordEntity item = (RecordEntity) adapter.getData().get(position);
 
         if (item.isHasSync()){
             Logger.e("上传过了 不要再传了");
@@ -164,33 +160,33 @@ public class RecordListActivity extends AppCompatActivity {
         RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
 
         builder.addFormDataPart(file.getName(), file.getName(), requestBody);
-        if (item.getType() == 1){
+        if (item.getRecordType() == 1){
             builder.addFormDataPart("audioName", file.getName());
             Logger.e("上传的是音频");
         }else{
             builder.addFormDataPart("videoName", file.getName());
             Logger.e("上传的是视频");
         }
-        builder.addFormDataPart("creator", item.getSpokesman());
-        builder.addFormDataPart("informant.birthday", item.getBirth());
-        builder.addFormDataPart("informant.education", userInfo.getEducation());
-        builder.addFormDataPart("informant.fatherLanguages", userInfo.getFatherLauages());
-        builder.addFormDataPart("informant.fatherNation", userInfo.getFatherNation());
-        builder.addFormDataPart("informant.gender", userInfo.getGender());
-        builder.addFormDataPart("informant.maritalStatus", userInfo.getMaritalStatus());
-        builder.addFormDataPart("informant.motherLanguages", userInfo.getMotherLauages());
-        builder.addFormDataPart("informant.motherNation", userInfo.getMotherNation());
-        builder.addFormDataPart("informant.spouseNation", userInfo.getSpouseNation());
-        builder.addFormDataPart("informant.userName", userInfo.getUserName());
+        builder.addFormDataPart("creator", item.getUserName());
+        builder.addFormDataPart("informant.birthday", item.getBirthday());
+        builder.addFormDataPart("informant.education", item.getEducation());
+        builder.addFormDataPart("informant.fatherLanguages", item.getFatherLaguages());
+        builder.addFormDataPart("informant.fatherNation", item.getFatherNation());
+        builder.addFormDataPart("informant.gender", item.getGender());
+        builder.addFormDataPart("informant.maritalStatus", item.getMaritalStatus());
+        builder.addFormDataPart("informant.motherLanguages", item.getMotherLaguages());
+        builder.addFormDataPart("informant.motherNation", item.getMotherNation());
+        builder.addFormDataPart("informant.spouseNation", item.getSpouseNation());
+        builder.addFormDataPart("informant.userName", SP.get().getString(Constant.SP_USER_PHONE));
         builder.addFormDataPart("itemName", item.getItemName());
-        builder.addFormDataPart("languageInfo.area", "中原区域");
-        builder.addFormDataPart("languageInfo.dialect", "老家土话");
-        builder.addFormDataPart("languageInfo.localDialect", "方言");
-        builder.addFormDataPart("languageInfo.name", item.getLanguageType());
-        builder.addFormDataPart("languageInfo.population", "320000");
+        builder.addFormDataPart("languageInfo.area", item.getArea());
+        builder.addFormDataPart("languageInfo.dialect", item.getDialect());
+        builder.addFormDataPart("languageInfo.localDialect", item.getLocalDialect());
+        builder.addFormDataPart("languageInfo.name", item.getLaguageType());
+        builder.addFormDataPart("languageInfo.population", String.valueOf(item.getPopulation()));
         builder.addFormDataPart("recordingDevice", Build.MANUFACTURER + " " + Build.MODEL);
         builder.addFormDataPart("recordingPlace", item.getPlace());
-        builder.addFormDataPart("recordingTime",item.getCreateTime());
+        builder.addFormDataPart("recordingTime",item.getTimeAdd());
         List<MultipartBody.Part> parts = builder.build().parts();
 
         LoadingDialog loadingDialog = new LoadingDialog(RecordListActivity.this, "正在上传文件...");
@@ -201,7 +197,7 @@ public class RecordListActivity extends AppCompatActivity {
                     @Override
                     public ObservableSource<Boolean> apply(BaseEntity baseEntity) throws Exception {
                         if (baseEntity.isSuccessful()) {
-                            DBHelper.getInstance(RecordListActivity.this).makeRecordSync(item.getName());
+                            RecordDataBase.getInstance(RecordListActivity.this).recordDao().makeSync(item.getId());
                             return Observable.just(Boolean.TRUE);
                         } else {
                             return Observable.just(Boolean.FALSE);
@@ -222,7 +218,7 @@ public class RecordListActivity extends AppCompatActivity {
                         loadingDialog.dismiss();
                         if ( b == Boolean.TRUE) {
                             ToastUtil.show(RecordListActivity.this, "上传成功");
-                            item.setHasSync(true);
+                            item.sync = 1;
                             adapter.notifyItemChanged(adapter.getData().indexOf(item));
                          } else {
                             ToastUtil.show(RecordListActivity.this, "上传失败");
@@ -244,24 +240,6 @@ public class RecordListActivity extends AppCompatActivity {
                 });
     }
 
-    private void delRecord(BaseQuickAdapter adapter, int position) {
-        new AlertDialog.Builder(RecordListActivity.this)
-                .setMessage("是否要删除这个音频？")
-                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
-                })
-                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        AudioRecordItem item = (AudioRecordItem) adapter.getData().get(position);
-                        delAudioItem(item);
-                    }
-                })
-                .show();
-    }
 
 
     @OnClick(R.id.iv_add)
@@ -286,30 +264,19 @@ public class RecordListActivity extends AppCompatActivity {
         loadingDialog.show();
 
 
-        Disposable disposable = Observable.create(new ObservableOnSubscribe<List<AudioRecordItem>>() {
+        Disposable disposable = Observable.create(new ObservableOnSubscribe<List<RecordEntity>>() {
             @Override
-            public void subscribe(ObservableEmitter<List<AudioRecordItem>> emitter) throws Exception {
-                List<AudioRecordItem> list = DBHelper.getInstance(RecordListActivity.this).getRecordList();
-                Collections.sort(list, new Comparator<AudioRecordItem>() {
-                    @Override
-                    public int compare(AudioRecordItem item, AudioRecordItem t1) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                            return Integer.compare(t1.getId(), item.getId());
-                        } else {
-                            return 0;
-                        }
-                    }
-
-                });
+            public void subscribe(ObservableEmitter<List<RecordEntity>> emitter) throws Exception {
+                List<RecordEntity> list = RecordDataBase.getInstance(RecordListActivity.this).recordDao().getAllRecord();
                 emitter.onNext(list);
                 emitter.onComplete();
             }
         })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<List<AudioRecordItem>>() {
+                .subscribe(new Consumer<List<RecordEntity>>() {
                     @Override
-                    public void accept(List<AudioRecordItem> audioRecordItems) throws Exception {
+                    public void accept(List<RecordEntity> audioRecordItems) throws Exception {
                         loadingDialog.dismiss();
                         adapter.setNewData(audioRecordItems);
                     }
@@ -320,16 +287,16 @@ public class RecordListActivity extends AppCompatActivity {
 
 
     @SuppressLint("StaticFieldLeak")
-    public void delAudioItem(AudioRecordItem audioRecordItem) {
+    public void delAudioItem(RecordEntity recordEntity) {
         new AsyncTask<Void, Void, Boolean>() {
 
             @Override
             protected Boolean doInBackground(Void... voids) {
-                String filePath = audioRecordItem.getFilePath();
+                String filePath = recordEntity.getFilePath();
                 File file = new File(filePath);
                 if (file.exists()) {
                     file.delete();
-                    DBHelper.getInstance(RecordListActivity.this).delAudio(audioRecordItem.getName());
+                    RecordDataBase.getInstance(RecordListActivity.this).recordDao().deleteRecord(recordEntity.getId());
                 }
                 return Boolean.TRUE;
             }
@@ -338,7 +305,7 @@ public class RecordListActivity extends AppCompatActivity {
             protected void onPostExecute(Boolean aBoolean) {
                 super.onPostExecute(aBoolean);
                 ToastUtil.show(RecordListActivity.this, "删除成功");
-                adapter.getData().remove(audioRecordItem);
+                adapter.getData().remove(recordEntity);
                 adapter.notifyDataSetChanged();
             }
         }.execute();

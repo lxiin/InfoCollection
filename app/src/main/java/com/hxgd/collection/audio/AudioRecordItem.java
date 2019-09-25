@@ -10,7 +10,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-
+@Deprecated
 public class AudioRecordItem implements Serializable {
 
      public int id;

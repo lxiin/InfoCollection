@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.hxgd.collection.BuildConfig;
 import com.hxgd.collection.R;
+import com.hxgd.collection.utils.Constant;
+import com.hxgd.collection.utils.SP;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,16 +27,14 @@ public class SettingActivity extends AppCompatActivity {
 
     @BindView(R.id.tv_username)
     TextView tvUserName;
-    @BindView(R.id.tv_user_phone)
-    TextView tvUserPhone;
+
     @BindView(R.id.tv_devices)
     TextView tvDevices;
     @BindView(R.id.iv_back)
     ImageView iv_back;
     @BindView(R.id.rl_username)
     RelativeLayout rlUserName;
-    @BindView(R.id.rl_user_phone)
-    RelativeLayout rlUserPhone;
+
     @BindView(R.id.tv_version)
     TextView tvVersion;
     @BindView(R.id.btn_logout)
@@ -43,13 +43,6 @@ public class SettingActivity extends AppCompatActivity {
     public static void start(Context context) {
         Intent starter = new Intent(context, SettingActivity.class);
         context.startActivity(starter);
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        tvUserName.setText(UserInfoManager.getInstance().getCurrentUserInfo().getUserName());
     }
 
     @Override
@@ -66,17 +59,9 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        tvUserName.setText(UserInfoManager.getInstance().getCurrentUserInfo().getUserName());
+        tvUserName.setText(SP.get().getString(Constant.SP_USER_PHONE));
         tvDevices.setText( Build.MANUFACTURER + Build.MODEL);
-        tvUserPhone.setText(UserInfoManager.getInstance().getCurrentUserInfo().getUserPhone());
         tvVersion.setText(BuildConfig.VERSION_NAME);
-    }
-
-
-
-    @OnClick({R.id.rl_username,R.id.rl_user_phone})
-    public void onRlUserInfoClick(){
-        UserInfoActivity.start(this);
     }
 
     @OnClick(R.id.btn_logout)

@@ -23,7 +23,9 @@ import com.hxgd.collection.R;
 import com.hxgd.collection.activity.RecordListActivity;
 import com.hxgd.collection.bean.BaseEntity;
 import com.hxgd.collection.net.ApiFactory;
+import com.hxgd.collection.utils.Constant;
 import com.hxgd.collection.utils.CountDownButtonHelper;
+import com.hxgd.collection.utils.SP;
 import com.hxgd.collection.utils.ToastUtil;
 import com.hxgd.collection.view.LoadingDialog;
 import com.orhanobut.logger.Logger;
@@ -97,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
          * SP中存有用户名的就不需要再登录
          * 反正登录 也是没有啥意义
          */
-        if (!TextUtils.isEmpty(UserInfoManager.getInstance().getCurrentUserInfo().getUserPhone())){
+        if (!TextUtils.isEmpty(SP.get().getString(Constant.SP_USER_PHONE,""))){
             skip2RecordListAct();
         }
 
@@ -185,16 +187,9 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if (BuildConfig.DEBUG){
+            SP.get().putString(Constant.SP_USER_PHONE,etPhone.getText().toString());
             //测试版本直接登录
-            UserInfoManager.getInstance().setUserPhone(etPhone.getText().toString());
-            if (UserInfoManager.getInstance().writeUserInfo()){
-                Intent intent = new Intent();
-                intent.setClass(LoginActivity.this,UserInfoActivity.class);
-                intent.putExtra("extra","aaa");
-                startActivityForResult(intent,REQUEST_CODE);
-            }else{
-                skip2RecordListAct();
-            }
+            skip2RecordListAct();
         }else{
             doLogin();
         }
@@ -229,17 +224,10 @@ public class LoginActivity extends AppCompatActivity {
                         if (baseEntity.isSuccessful()){
                             ToastUtil.show(LoginActivity.this,"登录成功,需要补充用户信息");
 
-                            UserInfoManager.getInstance().setUserPhone(phone);
-                            if (UserInfoManager.getInstance().writeUserInfo()){
-                                 Intent intent = new Intent();
-                                 intent.setClass(LoginActivity.this,UserInfoActivity.class);
-                                 intent.putExtra("extra","aaa");
-                                 startActivityForResult(intent,REQUEST_CODE);
-                            }else{
-                                ToastUtil.show(LoginActivity.this,"登录成功");
+                            SP.get().putString(Constant.SP_USER_PHONE,phone);
+                            ToastUtil.show(LoginActivity.this,"登录成功");
+                            skip2RecordListAct();
 
-                                skip2RecordListAct();
-                            }
                         }else{
                             ToastUtil.show(LoginActivity.this,"登录失败");
                         }

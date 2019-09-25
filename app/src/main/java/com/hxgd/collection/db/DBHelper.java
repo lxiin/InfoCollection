@@ -15,6 +15,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 这个用的sqlite 我把它标记为废弃了 不要再用这个类里的东西了
+ * 推荐使用{@link RecordDataBase} 这个里面RecordDao
+ */
+@Deprecated
  public class DBHelper extends SQLiteOpenHelper {
 
     private Context context;
