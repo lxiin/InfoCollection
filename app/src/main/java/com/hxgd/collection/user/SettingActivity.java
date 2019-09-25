@@ -66,9 +66,8 @@ public class SettingActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_logout)
     public void onBtnLogoutClick(View view){
-        //清空一下用户信息
-        UserInfoManager.getInstance().logout();
-
+        //清空一下用户手机号
+        SP.get().putString(Constant.SP_USER_PHONE,"");
         Intent intent = new Intent(this,LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
