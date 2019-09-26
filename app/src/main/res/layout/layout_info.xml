@@ -46,14 +46,26 @@
                     android:id="@+id/rl_item_name"
                     style="@style/UserInfo_RelativeLayout">
 
+
                     <TextView
+                        android:layout_marginLeft="4dp"
+                        android:id="@+id/tv_text1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
+                         android:layout_centerVertical="true"
                         android:text="名称"
                         android:textColor="@color/textColorBlack"
                         android:textSize="15sp" />
 
+                    <TextView
+                         android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/tv_text1"
+                        android:layout_marginLeft="5dp"
+                        android:text="*"
+                        android:layout_centerVertical="true"
+                        android:textColor="@android:color/holo_red_dark"
+                        />
                     <TextView
                         android:id="@+id/tv_itemname"
                         android:layout_width="wrap_content"
@@ -77,12 +89,23 @@
                     style="@style/UserInfo_RelativeLayout">
 
                     <TextView
+                        android:id="@+id/tv_text2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="语言类别"
                         android:textColor="@color/textColorBlack"
                         android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/tv_text2"
+                        android:layout_marginLeft="5dp"
+                        android:text="*"
+                        android:layout_centerVertical="true"
+                        android:textColor="@android:color/holo_red_dark"
+                        />
 
                     <TextView
                         android:id="@+id/tv_laguage_type"
@@ -111,9 +134,19 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="地点"
+                        android:id="@+id/tv_text3"
                         android:textColor="@color/textColorBlack"
                         android:textSize="15sp" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/tv_text3"
+                        android:layout_marginLeft="5dp"
+                        android:text="*"
+                        android:layout_centerVertical="true"
+                        android:textColor="@android:color/holo_red_dark"
+                        />
                     <TextView
                         android:id="@+id/tv_place"
                         android:layout_width="wrap_content"
@@ -138,6 +171,7 @@
                     style="@style/UserInfo_RelativeLayout">
 
                     <TextView
+                        android:id="@+id/tv_text4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -155,6 +189,16 @@
                         android:gravity="center_vertical"
                         android:textSize="13sp"
                         android:text="点击输入发言人" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/tv_text4"
+                        android:layout_marginLeft="5dp"
+                        android:text="*"
+                        android:layout_centerVertical="true"
+                        android:textColor="@android:color/holo_red_dark"
+                        />
 
                 </RelativeLayout>
 

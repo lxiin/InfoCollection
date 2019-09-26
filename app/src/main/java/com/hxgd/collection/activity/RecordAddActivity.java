@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -179,7 +180,7 @@ public class RecordAddActivity extends AppCompatActivity {
         Utils.hideKeyBoard(this);
 
         if (!checkInfo()){
-            ToastUtil.show(this,"请补全信息再保存");
+//            ToastUtil.show(this,"请补全信息再保存");
             return;
         }
 
@@ -197,7 +198,7 @@ public class RecordAddActivity extends AppCompatActivity {
         String motherNation = tvMotherNation.getText().toString();
         String maritalStatus = tvMarital_status.getText().toString();
         String spousenation= tvSpousenation.getText().toString();
-
+        int populationNum = TextUtils.isDigitsOnly(population) ? Integer.parseInt(population) : 0;
 
         new AsyncTask<Void,Void,Void>(){
 
@@ -205,7 +206,7 @@ public class RecordAddActivity extends AppCompatActivity {
             protected Void doInBackground(Void... voids) {
                 RecordEntity recordEntity = new RecordEntity(itemName,recordEvent.getFileName(),recordEvent.getFilePath(),recordEvent.getTime(),
                         spoker,gender,birthday,education,fatherLaguage,fatherNation,
-                        motherLaguage,motherNation,maritalStatus,spousenation,"","","",laguageType,Integer.parseInt(population),
+                        motherLaguage,motherNation,maritalStatus,spousenation,"","","",laguageType,populationNum,
                         place,AppUtils.timeStampToTime(System.currentTimeMillis()),recordEvent.getType(),0);
                 RecordDataBase.getInstance(RecordAddActivity.this).recordDao().insert(recordEntity);
                 return null;
@@ -224,40 +225,44 @@ public class RecordAddActivity extends AppCompatActivity {
 
     private boolean checkInfo(){
         if (tvItemName.getText().toString().isEmpty()||tvItemName.getText().toString().contains("点击输入")){
+            ToastUtil.show(this,"请输入名称");
             return false;
         }
         if (tvLaguageType.getText().toString().isEmpty()||tvLaguageType.getText().toString().contains("点击输入")){
+            ToastUtil.show(this,"请输入语言类别");
             return false;
         }
         if (tvPlace.getText().toString().isEmpty()||tvPlace.getText().toString().contains("点击输入")){
+            ToastUtil.show(this,"请输入地点");
             return false;
         }
         if (tvSpoker.getText().toString().isEmpty()||tvSpoker.getText().toString().contains("点击输入")){
+            ToastUtil.show(this,"请输入发言人");
             return false;
         }
-        if (tvGender.getText().toString().isEmpty()||tvGender.getText().toString().contains("点击输入")){
-            return false;
-        }
-        if (tvEducation.getText().toString().isEmpty()||tvEducation.getText().toString().contains("点击输入")){
-            return false;
-        }
-        if (tvBirthday.getText().toString().isEmpty()||tvBirthday.getText().toString().contains("点击输入")){
-            return false;
-        }
-        if (tvFatherLaguage.getText().toString().isEmpty()||tvFatherLaguage.getText().toString().contains("点击输入")){
-            return false;
-        }
-        if (tvFatherNation.getText().toString().isEmpty()||tvFatherNation.getText().toString().contains("点击输入")){
-            return false;
-        } if (tvMotherLaguage.getText().toString().isEmpty()||tvMotherLaguage.getText().toString().contains("点击输入")){
-            return false;
-        }
-        if (tvMotherNation.getText().toString().isEmpty()||tvMotherNation.getText().toString().contains("点击输入")){
-            return false;
-        }
-        if (tvMarital_status.getText().toString().isEmpty()||tvMarital_status.getText().toString().contains("点击输入")){
-            return false;
-        }
+//        if (tvGender.getText().toString().isEmpty()||tvGender.getText().toString().contains("点击输入")){
+//            return false;
+//        }
+//        if (tvEducation.getText().toString().isEmpty()||tvEducation.getText().toString().contains("点击输入")){
+//            return false;
+//        }
+//        if (tvBirthday.getText().toString().isEmpty()||tvBirthday.getText().toString().contains("点击输入")){
+//            return false;
+//        }
+//        if (tvFatherLaguage.getText().toString().isEmpty()||tvFatherLaguage.getText().toString().contains("点击输入")){
+//            return false;
+//        }
+//        if (tvFatherNation.getText().toString().isEmpty()||tvFatherNation.getText().toString().contains("点击输入")){
+//            return false;
+//        } if (tvMotherLaguage.getText().toString().isEmpty()||tvMotherLaguage.getText().toString().contains("点击输入")){
+//            return false;
+//        }
+//        if (tvMotherNation.getText().toString().isEmpty()||tvMotherNation.getText().toString().contains("点击输入")){
+//            return false;
+//        }
+//        if (tvMarital_status.getText().toString().isEmpty()||tvMarital_status.getText().toString().contains("点击输入")){
+//            return false;
+//        }
 
        return true;
 
