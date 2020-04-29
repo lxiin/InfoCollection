@@ -168,7 +168,7 @@ public class RecordVideoActivity extends AppCompatActivity implements SurfaceHol
             if (filePath != null){
                 File dir = new File(filePath + Constant.VIDEO_DIR);
                 if (!dir.exists()){
-                    dir.mkdir();
+                    dir.mkdirs();
                 }
                 fileName = "Video_"+System.currentTimeMillis()+".mp4";
                 filePath = dir + "/"+ fileName;

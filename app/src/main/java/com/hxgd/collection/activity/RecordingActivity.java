@@ -88,7 +88,7 @@ public class RecordingActivity extends AppCompatActivity {
             File folder = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + Constant.AUDIO_DIR);
             if (!folder.exists()) {
                 //folder doesn't exist, create the folder
-                folder.mkdir();
+                folder.mkdirs();
             }
 
             //start Chronometer
