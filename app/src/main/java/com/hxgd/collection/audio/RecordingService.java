@@ -94,9 +94,18 @@ public class RecordingService extends Service {
     private void stopRecording() {
 
         Log.e("sadas----->","录音文件存放的位置---->"+mFilePath);
-        mRecorder.stop();
+
+        try {
+            mRecorder.stop();
+        } catch (IllegalStateException e) {
+            // TODO 如果当前java状态和jni里面的状态不一致，
+            //e.printStackTrace();
+            mRecorder = null;
+            mRecorder = new MediaRecorder();
+        }
         mRecorder.release();
         mRecorder = null;
+
         RecordEvent recordEvent = new RecordEvent(mFileName,mFilePath,System.currentTimeMillis() - mStartingTimeMillis,1);
         EventBus.getDefault().post(recordEvent);
         Logger.e("EventBus发送消息----->"+System.currentTimeMillis());
