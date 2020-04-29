@@ -161,7 +161,7 @@ public class RecordVideoActivity extends AppCompatActivity implements SurfaceHol
             mRecoder.setVideoFrameRate(30);
             mRecoder.setVideoEncodingBitRate(3 * 1024 * 1024);
             mRecoder.setOrientationHint(90);
-            mRecoder.setMaxDuration(30 * 1000);
+            mRecoder.setMaxDuration(60 * 1000);
             mRecoder.setPreviewDisplay(mSurfaceHolder.getSurface());
 
             filePath = getSDPath();

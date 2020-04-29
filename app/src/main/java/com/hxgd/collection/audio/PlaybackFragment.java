@@ -148,6 +148,8 @@ public class PlaybackFragment extends DialogFragment {
         // request a window without the title
         dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 
+        mPlayButton.callOnClick();//自动播放录音
+
         return builder.create();
     }
 
