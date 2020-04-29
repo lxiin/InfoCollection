@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.hxgd.collection.R;
 import com.hxgd.collection.audio.RecordingService;
+import com.hxgd.collection.utils.Constant;
 import com.melnykov.fab.FloatingActionButton;
 
 import java.io.File;
@@ -84,9 +85,9 @@ public class RecordingActivity extends AppCompatActivity {
             mRecordButton.setImageResource(R.drawable.ic_media_stop);
             //mPauseButton.setVisibility(View.VISIBLE);
             Toast.makeText(this, R.string.recording_started, Toast.LENGTH_SHORT).show();
-            File folder = new File(Environment.getExternalStorageDirectory() + "/SoundRecorder");
+            File folder = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + Constant.AUDIO_DIR);
             if (!folder.exists()) {
-                //folder /SoundRecorder doesn't exist, create the folder
+                //folder doesn't exist, create the folder
                 folder.mkdir();
             }
 
