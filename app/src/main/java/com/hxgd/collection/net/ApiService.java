@@ -14,8 +14,8 @@ import retrofit2.http.Query;
 
 public interface ApiService {
 
-    String BASE_URL = "http://223.247.203.213:9055/";
-
+//    String BASE_URL = "http://223.247.203.213:9055/";
+    String BASE_URL = "http://115.28.243.68:9055/";
 
     @Multipart
     @POST("language/upload")
